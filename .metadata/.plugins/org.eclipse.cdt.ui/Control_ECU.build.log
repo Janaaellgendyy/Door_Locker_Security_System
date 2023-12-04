@@ -1,0 +1,49 @@
+22:37:17 **** Incremental Build of configuration Release for project Control_ECU ****
+make all 
+Building file: ../CONTROL_ECU.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"CONTROL_ECU.d" -MT"CONTROL_ECU.o" -c -o "CONTROL_ECU.o" "../CONTROL_ECU.c"
+Finished building: ../CONTROL_ECU.c
+ 
+Building file: ../Timer1.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Timer1.d" -MT"Timer1.o" -c -o "Timer1.o" "../Timer1.c"
+../Timer1.c: In function 'Timer1_setCallBack':
+../Timer1.c:57: warning: function return types not compatible due to 'volatile'
+Finished building: ../Timer1.c
+ 
+Building target: Control_ECU.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Control_ECU.map -mmcu=atmega32 -o "Control_ECU.elf"  ./Buzzer.o ./CONTROL_ECU.o ./DC_Motor.o ./I2c.o ./PWM.o ./Timer1.o ./external_eeprom.o ./gpio.o ./uart.o   
+Finished building target: Control_ECU.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Control_ECU.elf  >"Control_ECU.lss"
+Finished building: Control_ECU.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Control_ECU.elf  "Control_ECU.hex"
+Finished building: Control_ECU.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Control_ECU.elf  "Control_ECU.eep"
+Finished building: Control_ECU.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Control_ECU.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    5814 bytes (17.7% Full)
+(.text + .data + .bootloader)
+
+Data:        286 bytes (14.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+22:37:17 Build Finished. 0 errors, 1 warnings. (took 597ms)
+
