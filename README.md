@@ -1,6 +1,6 @@
 # Door_Locker_Security_System
-Created by: Jana Wael Elgendy
-Supervised ny: Eng. Mohamed Tarek
+Created by: Jana Wael Elgendy.
+Supervised by: Eng. Mohamed Tarek.
 Description: this project is a door locker system developed to:
 1. set a passcode for the door.
 2. verify the passcode.
